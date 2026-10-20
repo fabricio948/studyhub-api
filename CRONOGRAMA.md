@@ -10,16 +10,16 @@
 
 ## 1. Visão geral
 
-| # | Módulo / Projeto | Foco principal | Entrega | Branch | Status |
-|---|---|---|---|---|---|
-| M1 | Ambiente de trabalho | TypeScript, ESLint, Prettier, `.vscode`, `.env` com Zod, Git/GitHub, Fastify mínimo | Repositório-base reutilizável | `module-1-ambiente` | ⬜ |
-| M2 | HTTP e REST | Métodos, status codes, headers, idempotência, rotas e plugins do Fastify | Rotas de exemplo testadas com `curl` | `module-2-http-rest` | ⬜ |
-| M3 | Camadas, MVC e SOLID | Controller, Service, Repository, injeção de dependência, SOLID | Esqueleto de arquitetura explicável | `module-3-arquitetura` | ⬜ |
-| M4 | Banco de dados | Modelagem, relacionamentos, `onDelete`, soft delete, Prisma, MySQL no Docker | Modelagem no papel + migrations | `module-4-banco` | ⬜ |
-| P1 | Projeto 1: To-do List (REST) | CRUD completo em camadas | API funcionando e testada | `project-1-todolist` | ⬜ |
-| P2 | Projeto 2: Locadora de Veículos (REST) | Regras de negócio, status, transações, design patterns | API funcionando e testada | `project-2-locadora` | ⬜ |
-| P3 | Projeto 3: Biblioteca (GraphQL) | Schema, resolvers, REST vs GraphQL | API GraphQL funcionando | `project-3-biblioteca-graphql` | ⬜ |
-| M5 | IA | Prompts, Skills, MCP, RAG | Integração com uma das APIs | `module-5-ia` | ⬜ |
+| #   | Módulo / Projeto                       | Foco principal                                                                      | Entrega                              | Branch                         | Status |
+| --- | -------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------ | ------ |
+| M1  | Ambiente de trabalho                   | TypeScript, ESLint, Prettier, `.vscode`, `.env` com Zod, Git/GitHub, Fastify mínimo | Repositório-base reutilizável        | `module-1-ambiente`            | ⬜     |
+| M2  | HTTP e REST                            | Métodos, status codes, headers, idempotência, rotas e plugins do Fastify            | Rotas de exemplo testadas com `curl` | `module-2-http-rest`           | ⬜     |
+| M3  | Camadas, MVC e SOLID                   | Controller, Service, Repository, injeção de dependência, SOLID                      | Esqueleto de arquitetura explicável  | `module-3-arquitetura`         | ⬜     |
+| M4  | Banco de dados                         | Modelagem, relacionamentos, `onDelete`, soft delete, Prisma, MySQL no Docker        | Modelagem no papel + migrations      | `module-4-banco`               | ⬜     |
+| P1  | Projeto 1: To-do List (REST)           | CRUD completo em camadas                                                            | API funcionando e testada            | `project-1-todolist`           | ⬜     |
+| P2  | Projeto 2: Locadora de Veículos (REST) | Regras de negócio, status, transações, design patterns                              | API funcionando e testada            | `project-2-locadora`           | ⬜     |
+| P3  | Projeto 3: Biblioteca (GraphQL)        | Schema, resolvers, REST vs GraphQL                                                  | API GraphQL funcionando              | `project-3-biblioteca-graphql` | ⬜     |
+| M5  | IA                                     | Prompts, Skills, MCP, RAG                                                           | Integração com uma das APIs          | `module-5-ia`                  | ⬜     |
 
 O tema do Projeto 3 (Biblioteca) pode ser trocado antes de chegarmos nele.
 
@@ -29,16 +29,16 @@ O tema do Projeto 3 (Biblioteca) pode ser trocado antes de chegarmos nele.
 
 Todo módulo, do primeiro ao último, segue o mesmo roteiro. Isso mantém a sequência e o aprendizado.
 
-| Parte | O que contém |
-|---|---|
-| 1. Objetivo | O que você sabe fazer ao final |
-| 2. Teoria | Conceitos explicados antes de qualquer código |
-| 3. Passo a passo | Pastas e arquivos criados pelo terminal; o código você digita manualmente no VS Code |
-| 4. Comandos explicados | Cada comando de rodar/testar, com: o que faz, por que usamos e o que esperamos ver |
-| 5. Dicas | Erros comuns e como diagnosticar |
-| 6. Git detalhado | O que acontece em cada comando (área de trabalho, staging, commit, remoto) |
-| 7. Checklist | Só avança para o próximo módulo com tudo marcado |
-| 8. Registro | Data, dificuldades e o que revisar |
+| Parte                  | O que contém                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| 1. Objetivo            | O que você sabe fazer ao final                                                       |
+| 2. Teoria              | Conceitos explicados antes de qualquer código                                        |
+| 3. Passo a passo       | Pastas e arquivos criados pelo terminal; o código você digita manualmente no VS Code |
+| 4. Comandos explicados | Cada comando de rodar/testar, com: o que faz, por que usamos e o que esperamos ver   |
+| 5. Dicas               | Erros comuns e como diagnosticar                                                     |
+| 6. Git detalhado       | O que acontece em cada comando (área de trabalho, staging, commit, remoto)           |
+| 7. Checklist           | Só avança para o próximo módulo com tudo marcado                                     |
+| 8. Registro            | Data, dificuldades e o que revisar                                                   |
 
 **Por que o código é digitado à mão:** digitar força a leitura de cada linha, e você percebe os erros de sintaxe e os nomes. O terminal cria a estrutura (`mkdir`, `touch`) para você praticar a navegação e entender a organização de pastas.
 
@@ -58,41 +58,41 @@ Todo módulo, do primeiro ao último, segue o mesmo roteiro. Isso mantém a sequ
 
 ## 4. Foco constante (do M1 ao M5)
 
-| Tema | Como aparece ao longo do estudo |
-|---|---|
+| Tema                    | Como aparece ao longo do estudo                                                                        |
+| ----------------------- | ------------------------------------------------------------------------------------------------------ |
 | Arquitetura de software | M1: organização de pastas. M3: camadas e MVC. Projetos: uma arquitetura definida e justificada por API |
-| SOLID | M3: cada princípio com exemplo. Projetos: aplicado e revisado a cada refatoração |
-| Design patterns | M3: Repository e injeção de dependência. P2: Strategy (cálculo de preço) e State (status do aluguel) |
-| HTTP | M2: base. Todos os projetos: métodos, status codes e headers corretos |
-| Modelagem de banco | M4: teoria. P1 e P2: aplicação. P3: reaproveitamento |
-| IA | M5: prompts, Skills, MCP e RAG, aplicados a uma API que você já construiu |
+| SOLID                   | M3: cada princípio com exemplo. Projetos: aplicado e revisado a cada refatoração                       |
+| Design patterns         | M3: Repository e injeção de dependência. P2: Strategy (cálculo de preço) e State (status do aluguel)   |
+| HTTP                    | M2: base. Todos os projetos: métodos, status codes e headers corretos                                  |
+| Modelagem de banco      | M4: teoria. P1 e P2: aplicação. P3: reaproveitamento                                                   |
+| IA                      | M5: prompts, Skills, MCP e RAG, aplicados a uma API que você já construiu                              |
 
 ---
 
 ## 5. Git: evolução por módulo
 
-| Módulo | O que aprendemos de Git |
-|---|---|
-| M1 | `init`, `status`, `add`, `commit`, `log`, `remote`, `push`, `.gitignore`, o que são as áreas do Git |
-| M2 | Branches, Pull Request no GitHub, `merge` |
-| M3 | `git diff`, `git restore`, desfazer alterações com segurança |
-| M4 | Commits pequenos e atômicos, `git revert` |
-| P1 | Fluxo completo: branch → commits → PR → merge → deletar branch |
-| P2 | Tags e releases, `git stash` |
-| P3 | Resolução de conflitos, `git log` avançado |
-| M5 | Revisão geral e boas práticas |
+| Módulo | O que aprendemos de Git                                                                             |
+| ------ | --------------------------------------------------------------------------------------------------- |
+| M1     | `init`, `status`, `add`, `commit`, `log`, `remote`, `push`, `.gitignore`, o que são as áreas do Git |
+| M2     | Branches, Pull Request no GitHub, `merge`                                                           |
+| M3     | `git diff`, `git restore`, desfazer alterações com segurança                                        |
+| M4     | Commits pequenos e atômicos, `git revert`                                                           |
+| P1     | Fluxo completo: branch → commits → PR → merge → deletar branch                                      |
+| P2     | Tags e releases, `git stash`                                                                        |
+| P3     | Resolução de conflitos, `git log` avançado                                                          |
+| M5     | Revisão geral e boas práticas                                                                       |
 
 ### Padrão de commits (Conventional Commits)
 
-| Tipo | Quando usar | Exemplo |
-|---|---|---|
-| `feat` | Funcionalidade nova | `feat: adiciona rota de health` |
-| `fix` | Correção de bug | `fix: corrige validação do .env` |
-| `chore` | Configuração e ferramentas | `chore: configura eslint e prettier` |
-| `docs` | README e documentação | `docs: atualiza cronograma do módulo 1` |
+| Tipo       | Quando usar                           | Exemplo                                  |
+| ---------- | ------------------------------------- | ---------------------------------------- |
+| `feat`     | Funcionalidade nova                   | `feat: adiciona rota de health`          |
+| `fix`      | Correção de bug                       | `fix: corrige validação do .env`         |
+| `chore`    | Configuração e ferramentas            | `chore: configura eslint e prettier`     |
+| `docs`     | README e documentação                 | `docs: atualiza cronograma do módulo 1`  |
 | `refactor` | Reorganizar sem mudar o comportamento | `refactor: separa controller do service` |
-| `test` | Testes | `test: cobre criação de tarefa` |
-| `style` | Formatação, sem mudança de lógica | `style: ajusta indentação` |
+| `test`     | Testes                                | `test: cobre criação de tarefa`          |
+| `style`    | Formatação, sem mudança de lógica     | `style: ajusta indentação`               |
 
 `fix` é apenas um dos tipos: só é usado quando existe um bug para corrigir.
 
@@ -105,6 +105,7 @@ Todo módulo, do primeiro ao último, segue o mesmo roteiro. Isso mantém a sequ
 **Objetivo:** ter um repositório-base configurado, versionado no GitHub e reutilizável.
 
 **Teoria:**
+
 - O que são Node.js, npm e `package.json`
 - TypeScript: o que muda entre escrever em TS e rodar em JS; por que usar o modo `strict`
 - ESLint (encontra erros e más práticas) vs Prettier (define o estilo): papéis diferentes, por que não brigam
@@ -112,6 +113,7 @@ Todo módulo, do primeiro ao último, segue o mesmo roteiro. Isso mantém a sequ
 - Git: área de trabalho, área de preparação (staging), repositório local e remoto
 
 **Prática (em ordem):**
+
 1. Conferir versões instaladas
 2. Criar a pasta do projeto e iniciar o Git
 3. `package.json` e `.gitignore`
@@ -124,6 +126,7 @@ Todo módulo, do primeiro ao último, segue o mesmo roteiro. Isso mantém a sequ
 10. README, primeiro push e primeiro Pull Request
 
 **Checklist:**
+
 - [ ] `node -v` e `npm -v` conferidos
 - [ ] Projeto compila sem erros
 - [ ] Lint e format rodam sem erros
@@ -178,5 +181,5 @@ Todo módulo, do primeiro ao último, segue o mesmo roteiro. Isso mantém a sequ
 ## 7. Registro de progresso
 
 | Data | Módulo | O que foi feito | Dificuldades | Revisar |
-|---|---|---|---|---|
-| | | | | |
+| ---- | ------ | --------------- | ------------ | ------- |
+|      |        |                 |              |         |

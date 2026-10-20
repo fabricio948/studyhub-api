@@ -1,3 +1,2 @@
-const mensagem: string = "Ambiente TypeScript funcionando";
-
-console.log(mensagem);
+const outra: string = "teste";
+console.log(outra);
