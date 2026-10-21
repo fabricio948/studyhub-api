@@ -1,6 +1,14 @@
+import { App } from "./app";
 import { Env } from "./config/env";
 
-const env = Env.load();
+async function bootstrap(): Promise<void> {
+  const env = Env.load();
+  const app = new App({ logger: env.NODE_ENV !== "test" });
 
-console.log(`Ambiente: ${env.NODE_ENV}`);
-console.log(`Servidor vai escutar em http://${env.HOST}:${env.PORT}`);
+  await app.listen(env.HOST, env.PORT);
+}
+
+bootstrap().catch((error: unknown) => {
+  console.error(error);
+  process.exit(1);
+});

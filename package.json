@@ -13,22 +13,26 @@
     "fix": "npm run lint:fix && npm run format",
     "check": "npm run typecheck && npm run lint && npm run format:check",
     "start": "node --env-file=.env dist/index.js",
-    "dev": "npm run fix && npm run check && npm run build && npm start"
+    "start:safe": "npm run fix && npm run check && npm run build && npm start",
+    "dev": "tsx watch --env-file=.env src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    
     "@eslint/js": "^10.0.1",
     "@types/node": "^24.19.2",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "3.9.10",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.0"
   },
   "dependencies": {
+    "fastify": "^5.12.7",
     "zod": "^4.6.7"
   }
 }
