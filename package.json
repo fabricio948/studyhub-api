@@ -10,7 +10,8 @@
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "check": "npm run typecheck && npm run lint && npm run format:check"
+    "check": "npm run typecheck && npm run lint && npm run format:check",
+    "start": "node --env-file=.env dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -24,5 +25,8 @@
     "prettier": "3.9.10",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.0"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
   }
 }
