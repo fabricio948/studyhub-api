@@ -7,6 +7,10 @@ export default defineConfig([
   { ignores: ["dist/**"] },
   {
     files: ["**/*.ts"],
-    extends: [eslint.configs.recommended, tseslint.configs.recommended, prettier],
+    extends: [
+      eslint.configs.recommended,
+      tseslint.configs.recommended,
+      prettier,
+    ],
   },
 ]);
