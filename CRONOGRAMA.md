@@ -12,7 +12,7 @@
 
 | #   | Módulo / Projeto                       | Foco principal                                                                      | Entrega                              | Branch                         | Status |
 | --- | -------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------ | ------ |
-| M1  | Ambiente de trabalho                   | TypeScript, ESLint, Prettier, `.vscode`, `.env` com Zod, Git/GitHub, Fastify mínimo | Repositório-base reutilizável        | `module-1-ambiente`            | ⬜     |
+| M1  | Ambiente de trabalho                   | TypeScript, ESLint, Prettier, `.vscode`, `.env` com Zod, Git/GitHub, Fastify mínimo | Repositório-base reutilizável        | `module-1-ambiente`            | ✅     |
 | M2  | HTTP e REST                            | Métodos, status codes, headers, idempotência, rotas e plugins do Fastify            | Rotas de exemplo testadas com `curl` | `module-2-http-rest`           | ⬜     |
 | M3  | Camadas, MVC e SOLID                   | Controller, Service, Repository, injeção de dependência, SOLID                      | Esqueleto de arquitetura explicável  | `module-3-arquitetura`         | ⬜     |
 | M4  | Banco de dados                         | Modelagem, relacionamentos, `onDelete`, soft delete, Prisma, MySQL no Docker        | Modelagem no papel + migrations      | `module-4-banco`               | ⬜     |
