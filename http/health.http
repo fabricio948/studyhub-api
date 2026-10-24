@@ -1,0 +1,10 @@
+@baseUrl = http://127.0.0.1:3333
+
+### Saude da aplicacao
+GET {{baseUrl}}/health
+
+### Rota que nao existe
+GET {{baseUrl}}/nao-existe
+
+### Metodo errado em uma rota existente
+POST {{baseUrl}}/health
