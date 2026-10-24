@@ -1,0 +1,13 @@
+@baseUrl = http://127.0.0.1:3333
+
+### Listar notas
+GET {{baseUrl}}/notes
+
+### Buscar a nota 1
+GET {{baseUrl}}/notes/1
+
+### Nota que nao existe (404)
+GET {{baseUrl}}/notes/999
+
+### Id invalido (400)
+GET {{baseUrl}}/notes/abc
