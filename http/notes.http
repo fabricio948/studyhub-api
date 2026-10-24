@@ -21,3 +21,73 @@ GET {{baseUrl}}/notes/0
 
 ### Id negativo (400)
 GET {{baseUrl}}/notes/-1
+
+
+### Criar nota (201)
+POST {{baseUrl}}/notes
+Content-Type: application/json
+
+{
+  "title": "Estudar Zod",
+  "content": "Validacao de entrada"
+}
+
+### Criar so com titulo (201, content vazio)
+POST {{baseUrl}}/notes
+Content-Type: application/json
+
+{ "title": "So titulo" }
+
+### Criar sem titulo (400)
+POST {{baseUrl}}/notes
+Content-Type: application/json
+
+{ "content": "sem titulo" }
+
+### Criar com titulo so de espacos (400)
+POST {{baseUrl}}/notes
+Content-Type: application/json
+
+{ "title": "     " }
+
+### JSON quebrado (400, erro do proprio Fastify)
+POST {{baseUrl}}/notes
+Content-Type: application/json
+
+{ "title": 
+
+### Substituir a nota 1 (200)
+PUT {{baseUrl}}/notes/1
+Content-Type: application/json
+
+{ "title": "HTTP revisado", "content": "Idempotencia e status codes" }
+
+### Substituir faltando campo (400)
+PUT {{baseUrl}}/notes/1
+Content-Type: application/json
+
+{ "title": "So titulo" }
+
+### Alterar parte da nota 1 (200)
+PATCH {{baseUrl}}/notes/1
+Content-Type: application/json
+
+{ "title": "So o titulo mudou" }
+
+### PATCH vazio (400)
+PATCH {{baseUrl}}/notes/1
+Content-Type: application/json
+
+{}
+
+### Alterar nota que nao existe (404)
+PATCH {{baseUrl}}/notes/999
+Content-Type: application/json
+
+{ "title": "fantasma" }
+
+### Remover a nota 2 (204)
+DELETE {{baseUrl}}/notes/2
+
+### Remover de novo (404)
+DELETE {{baseUrl}}/notes/2

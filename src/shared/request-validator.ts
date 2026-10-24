@@ -7,10 +7,14 @@ export class RequestValidator {
 
     if (!result.success) {
       throw new ValidationError(
-        result.error.issues.map((issue) => ({
-          field: issue.path.join("."),
-          message: issue.message,
-        })),
+        result.error.issues.map((issue) => {
+          const field = issue.path.join(".");
+
+          return {
+            field: field === "" ? "(geral)" : field,
+            message: issue.message,
+          };
+        }),
       );
     }
 

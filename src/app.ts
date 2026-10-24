@@ -1,9 +1,13 @@
 import Fastify, { type FastifyInstance } from "fastify";
 import { STATUS_CODES } from "node:http";
 import { HealthController } from "./modules/health/health.controller";
+import { CreateNoteController } from "./modules/notes/create-note.controller";
+import { DeleteNoteController } from "./modules/notes/delete-note.controller";
 import { GetNoteController } from "./modules/notes/get-note.controller";
 import { ListNotesController } from "./modules/notes/list-notes.controller";
 import { NotesRepository } from "./modules/notes/notes.repository";
+import { ReplaceNoteController } from "./modules/notes/replace-note.controller";
+import { UpdateNoteController } from "./modules/notes/update-note.controller";
 import type { ErrorResponse } from "./shared/error-response";
 import { AppError } from "./shared/errors";
 
@@ -76,6 +80,10 @@ export class App {
     const healthController = new HealthController();
     const listNotesController = new ListNotesController(notesRepository);
     const getNoteController = new GetNoteController(notesRepository);
+    const createNoteController = new CreateNoteController(notesRepository);
+    const replaceNoteController = new ReplaceNoteController(notesRepository);
+    const updateNoteController = new UpdateNoteController(notesRepository);
+    const deleteNoteController = new DeleteNoteController(notesRepository);
 
     this.server.get("/health", async () => healthController.handle());
 
@@ -83,6 +91,22 @@ export class App {
 
     this.server.get("/notes/:id", async (request) =>
       getNoteController.handle(request),
+    );
+
+    this.server.post("/notes", async (request, reply) =>
+      createNoteController.handle(request, reply),
+    );
+
+    this.server.put("/notes/:id", async (request) =>
+      replaceNoteController.handle(request),
+    );
+
+    this.server.patch("/notes/:id", async (request) =>
+      updateNoteController.handle(request),
+    );
+
+    this.server.delete("/notes/:id", async (request, reply) =>
+      deleteNoteController.handle(request, reply),
     );
   }
 
