@@ -5,6 +5,6 @@ export class ListNotesController {
   constructor(private readonly notesRepository: NotesRepository) {}
 
   handle(): Note[] {
-    throw new Error("falha secreta de teste");
+    return this.notesRepository.findAll();
   }
 }
