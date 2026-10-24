@@ -11,3 +11,13 @@ GET {{baseUrl}}/notes/999
 
 ### Id invalido (400)
 GET {{baseUrl}}/notes/abc
+
+
+### Id decimal (400)
+GET {{baseUrl}}/notes/1.5
+
+### Id zero (400)
+GET {{baseUrl}}/notes/0
+
+### Id negativo (400)
+GET {{baseUrl}}/notes/-1

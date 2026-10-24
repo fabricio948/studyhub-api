@@ -1,11 +1,11 @@
 import Fastify, { type FastifyInstance } from "fastify";
+import { STATUS_CODES } from "node:http";
 import { HealthController } from "./modules/health/health.controller";
-import {
-  GetNoteController,
-  type GetNoteParams,
-} from "./modules/notes/get-note.controller";
+import { GetNoteController } from "./modules/notes/get-note.controller";
 import { ListNotesController } from "./modules/notes/list-notes.controller";
 import { NotesRepository } from "./modules/notes/notes.repository";
+import type { ErrorResponse } from "./shared/error-response";
+import { AppError } from "./shared/errors";
 
 export interface AppOptions {
   logger: boolean;
@@ -16,7 +16,58 @@ export class App {
 
   constructor(options: AppOptions) {
     this.server = Fastify({ logger: options.logger });
+    this.registerErrorHandler();
     this.registerRoutes();
+  }
+
+  private registerErrorHandler(): void {
+    this.server.setErrorHandler((error, request, reply) => {
+      if (error instanceof AppError) {
+        const body: ErrorResponse = {
+          statusCode: error.statusCode,
+          error: error.error,
+          message: error.message,
+          details: error.details,
+        };
+
+        return reply.code(error.statusCode).send(body);
+      }
+
+      const statusCode = App.statusCodeOf(error);
+
+      if (statusCode >= 500) {
+        request.log.error(error);
+
+        const body: ErrorResponse = {
+          statusCode: 500,
+          error: "Internal Server Error",
+          message: "Erro interno do servidor",
+        };
+
+        return reply.code(500).send(body);
+      }
+
+      const body: ErrorResponse = {
+        statusCode,
+        error: STATUS_CODES[statusCode] ?? "Error",
+        message: error instanceof Error ? error.message : "Requisicao invalida",
+      };
+
+      return reply.code(statusCode).send(body);
+    });
+  }
+
+  private static statusCodeOf(error: unknown): number {
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "statusCode" in error &&
+      typeof error.statusCode === "number"
+    ) {
+      return error.statusCode;
+    }
+
+    return 500;
   }
 
   private registerRoutes(): void {
@@ -30,9 +81,8 @@ export class App {
 
     this.server.get("/notes", async () => listNotesController.handle());
 
-    this.server.get<{ Params: GetNoteParams }>(
-      "/notes/:id",
-      async (request, reply) => getNoteController.handle(request, reply),
+    this.server.get("/notes/:id", async (request) =>
+      getNoteController.handle(request),
     );
   }
 
